@@ -106,7 +106,7 @@ on:
 
 jobs:
   ci:
-    uses: ibkpe-platform-org/dso-appconfig-reusable/.github/workflows/_ci-appconfig.yml@main
+    uses: armedinag/dso-appconfig-reusable/.github/workflows/_ci-appconfig.yml@main
     with:
       application: 'my-application'
     secrets:
@@ -126,7 +126,7 @@ on:
 
 jobs:
   deploy:
-    uses: ibkpe-platform-org/dso-appconfig-reusable/.github/workflows/_cd-appconfig-dev.yml@main
+    uses: armedinag/dso-appconfig-reusable/.github/workflows/_cd-appconfig-dev.yml@main
     with:
       application: 'my-application'
       version: ${{ inputs.version }}
