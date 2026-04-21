@@ -408,6 +408,7 @@ jobs:
 
       - name: Install Azure App Configuration extension
         run: |
+          az extension add -n appconfig
           az extension add --name appconfig --yes || az extension update --name appconfig
 
       - name: Preview configuration changes (Dry Run)
