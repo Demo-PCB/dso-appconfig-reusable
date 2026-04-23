@@ -254,25 +254,17 @@ jobs:
           
           if [ -f "$CONFIG_FILE" ]; then
             APPCONFIG_NAME=$(grep -A5 "^${{ env.ENVIRONMENT }}:" "$CONFIG_FILE" | grep "resourceName:" | head -1 | awk '{print $2}' | tr -d '"' | tr -d "'" || true)
-            #RESOURCE_GROUP=$(grep -A5 "^${{ env.ENVIRONMENT }}:" "$CONFIG_FILE" | grep "resourceGroup:" | head -1 | awk '{print $2}' | tr -d '"' | tr -d "'" || true)
             
             if [ -z "$APPCONFIG_NAME" ]; then
               echo "::error::No resource-name found for environment ${{ env.ENVIRONMENT }} in config.yml"
               exit 1
             fi
-            
-#            if [ -z "$RESOURCE_GROUP" ]; then
-#              echo "::error::No resource-group found for environment ${{ env.ENVIRONMENT }} in config.yml"
-#              exit 1
-#            fi
           else
             echo "::error::config.yml not found in repository"
             exit 1
           fi
           
           echo "resource-name=${APPCONFIG_NAME}" >> $GITHUB_OUTPUT
-          #echo "resource-group=${RESOURCE_GROUP}" >> $GITHUB_OUTPUT
-          #echo "::notice::App Configuration: ${APPCONFIG_NAME} in Resource Group: ${RESOURCE_GROUP}"
           echo "::notice::App Configuration: ${APPCONFIG_NAME}"
 
       - name: Resolve Artifactory URL
