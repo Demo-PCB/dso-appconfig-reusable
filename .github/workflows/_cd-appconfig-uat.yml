@@ -579,9 +579,10 @@ jobs:
   # =====================================================
   create-git-tag:
     name: Create Git Tag
-    runs-on:
-      group: sh-dso-snbx-cd-local-001
-      labels: [agent-snbx-001]
+#    runs-on:
+#      group: sh-dso-snbx-cd-local-001
+#      labels: [agent-snbx-001]
+    runs-on: ubuntu-latest
     needs: [prepare, deploy]
     if: ${{ needs.deploy.outputs.status == 'success' && inputs.FLAG_SKIP_GIT_TAG != true }}
     outputs:
