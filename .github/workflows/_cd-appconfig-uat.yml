@@ -250,7 +250,7 @@ jobs:
       - name: Load environment configuration
         id: config
         run: |
-          CONFIG_FILE="config.yml"
+          CONFIG_FILE="appconfig/config.yml"
           
           if [ -f "$CONFIG_FILE" ]; then
             APPCONFIG_NAME=$(grep -A5 "^${{ env.ENVIRONMENT }}:" "$CONFIG_FILE" | grep "appconfig-name:" | head -1 | awk '{print $2}' | tr -d '"' | tr -d "'" || true)
