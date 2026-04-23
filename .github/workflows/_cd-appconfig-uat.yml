@@ -257,7 +257,7 @@ jobs:
             RESOURCE_GROUP=$(grep -A5 "^${{ env.ENVIRONMENT }}:" "$CONFIG_FILE" | grep "resource-group:" | head -1 | awk '{print $2}' | tr -d '"' | tr -d "'" || true)
             
             if [ -z "$APPCONFIG_NAME" ]; then
-              echo "::error::No resource-name found for environment ${{ env.ENVIRONMENT }} in config.yml"
+              echo "::error::No appconfig-name found for environment ${{ env.ENVIRONMENT }} in config.yml"
               exit 1
             fi
             
