@@ -253,7 +253,7 @@ jobs:
           CONFIG_FILE="appconfig/config.yml"
           
           if [ -f "$CONFIG_FILE" ]; then
-            APPCONFIG_NAME=$(grep -A5 "^${{ env.ENVIRONMENT }}:" "$CONFIG_FILE" | grep "appconfig-name:" | head -1 | awk '{print $2}' | tr -d '"' | tr -d "'" || true)
+            APPCONFIG_NAME=$(grep -A5 "^${{ env.ENVIRONMENT }}:" "$CONFIG_FILE" | grep "resource-name:" | head -1 | awk '{print $2}' | tr -d '"' | tr -d "'" || true)
             RESOURCE_GROUP=$(grep -A5 "^${{ env.ENVIRONMENT }}:" "$CONFIG_FILE" | grep "resource-group:" | head -1 | awk '{print $2}' | tr -d '"' | tr -d "'" || true)
             
             if [ -z "$APPCONFIG_NAME" ]; then
@@ -270,7 +270,7 @@ jobs:
             exit 1
           fi
           
-          echo "appconfig-name=${APPCONFIG_NAME}" >> $GITHUB_OUTPUT
+          echo "resource-name=${APPCONFIG_NAME}" >> $GITHUB_OUTPUT
           echo "resource-group=${RESOURCE_GROUP}" >> $GITHUB_OUTPUT
           echo "::notice::App Configuration: ${APPCONFIG_NAME} in Resource Group: ${RESOURCE_GROUP}"
 
