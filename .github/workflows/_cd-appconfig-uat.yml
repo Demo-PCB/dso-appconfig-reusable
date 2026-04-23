@@ -177,9 +177,10 @@ jobs:
   # =====================================================
   prepare:
     name: Prepare Deployment
-    runs-on:
-      group: sh-dso-snbx-cd-local-001
-      labels: [agent-snbx-001]
+#    runs-on:
+#      group: sh-dso-snbx-cd-local-001
+#      labels: [agent-snbx-001]
+    runs-on: ubuntu-latest
     outputs:
       lower-app-name: ${{ steps.names.outputs.lower-app-name }}
       upper-app-name: ${{ steps.names.outputs.upper-app-name }}
@@ -295,9 +296,10 @@ jobs:
   # =====================================================
   download-artifact:
     name: Download Artifact
-    runs-on:
-      group: sh-dso-snbx-cd-local-001
-      labels: [agent-snbx-001]
+#    runs-on:
+#      group: sh-dso-snbx-cd-local-001
+#      labels: [agent-snbx-001]
+    runs-on: ubuntu-latest
     needs: [prepare]
 
     env:
@@ -380,9 +382,10 @@ jobs:
   # =====================================================
   dry-run:
     name: Dry Run Preview
-    runs-on:
-      group: sh-dso-snbx-cd-local-001
-      labels: [agent-snbx-001]
+#    runs-on:
+#      group: sh-dso-snbx-cd-local-001
+#      labels: [agent-snbx-001]
+    runs-on: ubuntu-latest
     needs: [prepare, download-artifact]
     outputs:
       preview-status: ${{ steps.dry-run.outputs.status }}
@@ -488,9 +491,10 @@ jobs:
   # =====================================================
   deploy:
     name: Deploy to App Configuration
-    runs-on:
-      group: sh-dso-snbx-cd-local-001
-      labels: [agent-snbx-001]
+#    runs-on:
+#      group: sh-dso-snbx-cd-local-001
+#      labels: [agent-snbx-001]
+    runs-on: ubuntu-latest
     needs: [prepare, download-artifact, dry-run]
     if: ${{ inputs.FLAG_DRY_RUN_ONLY != true }}
     outputs:
@@ -636,9 +640,10 @@ jobs:
   # =====================================================
   post-deploy:
     name: Post Deployment
-    runs-on:
-      group: sh-dso-snbx-cd-local-001
-      labels: [agent-snbx-001]
+#    runs-on:
+#      group: sh-dso-snbx-cd-local-001
+#      labels: [agent-snbx-001]
+    runs-on: ubuntu-latest
     needs: [prepare, deploy, create-git-tag]
     if: always()
 
