@@ -186,7 +186,7 @@ jobs:
       upper-app-name: ${{ steps.names.outputs.upper-app-name }}
       artifact-name: ${{ steps.artifact.outputs.artifact-name }}
       artifact-path: ${{ steps.artifact.outputs.artifact-path }}
-      appconfig-name: ${{ steps.config.outputs.appconfig-name }}
+      resource-name: ${{ steps.config.outputs.resource-name }}
       resource-group: ${{ steps.config.outputs.resource-group }}
       azure-client-id: ${{ steps.resolve-azure-auth.outputs.azure-client-id }}
       artifactory-url: ${{ steps.resolve-artifactory.outputs.url }}
@@ -413,7 +413,7 @@ jobs:
         run: |
           echo "::group::Dry Run - Preview Changes"
           
-          APPCONFIG_NAME="${{ needs.prepare.outputs.appconfig-name }}"
+          APPCONFIG_NAME="${{ needs.prepare.outputs.resource-name }}"
           RESOURCE_GROUP="${{ needs.prepare.outputs.resource-group }}"
           DATA_FILE="./deployment/data.json"
           
@@ -479,7 +479,7 @@ jobs:
           ## Target Resource
           | Property | Value |
           |----------|-------|
-          | **App Configuration** | ${{ needs.prepare.outputs.appconfig-name }} |
+          | **App Configuration** | ${{ needs.prepare.outputs.resource-name }} |
           | **Resource Group** | ${{ needs.prepare.outputs.resource-group }} |
           | **Environment** | ${{ env.ENVIRONMENT_UPPER }} |
           
@@ -524,7 +524,7 @@ jobs:
         run: |
           echo "::group::Importing configuration"
           
-          APPCONFIG_NAME="${{ needs.prepare.outputs.appconfig-name }}"
+          APPCONFIG_NAME="${{ needs.prepare.outputs.resource-name }}"
           DATA_FILE="./deployment/data.json"
           
           IMPORT_CMD="az appconfig kv import \
@@ -572,7 +572,7 @@ jobs:
         run: |
           echo "::group::Verifying deployment"
           
-          APPCONFIG_NAME="${{ needs.prepare.outputs.appconfig-name }}"
+          APPCONFIG_NAME="${{ needs.prepare.outputs.resource-name }}"
           
           az appconfig kv list \
             --name "${APPCONFIG_NAME}" \
@@ -675,7 +675,7 @@ jobs:
           ## Target Resource
           | Property | Value |
           |----------|-------|
-          | **App Configuration** | ${{ needs.prepare.outputs.appconfig-name }} |
+          | **App Configuration** | ${{ needs.prepare.outputs.resource-name }} |
           | **Resource Group** | ${{ needs.prepare.outputs.resource-group }} |
           
           ---
