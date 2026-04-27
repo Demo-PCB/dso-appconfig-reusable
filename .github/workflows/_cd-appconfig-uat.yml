@@ -204,6 +204,7 @@ jobs:
           dso-ghe-private-key: ${{ secrets.DSO_WORKFLOWS_GHAPP_PK }}
           dso-workflows-configs-repo: ${{ vars.DSO_WORKFLOWS_CONFIGS_REPO }}
           dso-workflows-configs-repo-owner: ${{ vars.DSO_WORKFLOWS_CONFIGS_REPO_OWNER }}
+          dso-app-repo-owner: ${{ vars.DSO_WORKFLOWS_CONFIGS_REPO_OWNER }}
 
       - name: Export Artifactory URL from workflow configs
         run: |
