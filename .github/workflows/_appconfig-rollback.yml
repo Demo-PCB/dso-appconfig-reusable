@@ -136,17 +136,12 @@ jobs:
       - name: Load environment configuration
         id: config
         run: |
-          CONFIG_FILE="config.yml"
+          CONFIG_FILE="appconfig/config.yml"
           ENV="${{ inputs.environment }}"
           
           if [ -f "$CONFIG_FILE" ]; then
-            APPCONFIG_NAME=$(grep -A5 "^${ENV}:" "$CONFIG_FILE" | grep "appconfig-name:" | head -1 | awk '{print $2}' | tr -d '"' | tr -d "'" || true)
+            APPCONFIG_NAME=$(grep -A5 "^${ENV}:" "$CONFIG_FILE" | grep "resourceName:" | head -1 | awk '{print $2}' | tr -d '"' | tr -d "'" || true)
             RESOURCE_GROUP=$(grep -A5 "^${ENV}:" "$CONFIG_FILE" | grep "resource-group:" | head -1 | awk '{print $2}' | tr -d '"' | tr -d "'" || true)
-            
-            if [ -z "$APPCONFIG_NAME" ] || [ -z "$RESOURCE_GROUP" ]; then
-              echo "::error::Configuration not found for environment ${ENV}"
-              exit 1
-            fi
           else
             echo "::error::config.yml not found"
             exit 1
