@@ -296,11 +296,6 @@ jobs:
               echo "::error::No appconfig-name found for environment ${{ env.ENVIRONMENT }} in config.yml"
               exit 1
             fi
-            
-#            if [ -z "$RESOURCE_GROUP" ]; then
-#              echo "::error::No resource-group found for environment ${{ env.ENVIRONMENT }} in config.yml"
-#              exit 1
-#            fi
           else
             echo "::error::config.yml not found in repository"
             exit 1
