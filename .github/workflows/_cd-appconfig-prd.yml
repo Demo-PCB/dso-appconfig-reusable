@@ -28,7 +28,7 @@ on:
         required: true
         type: string
 
-      version:
+      artifact-version:
         description: 'Release version to deploy and tag (format: {project-version} only, e.g., 1.0.0; no run-number)'
         required: true
         type: string
