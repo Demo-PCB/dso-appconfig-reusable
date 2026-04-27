@@ -28,7 +28,7 @@ on:
         required: true
         type: string
 
-      artifact-version:
+      version:
         description: 'Release version to deploy and tag (format: {project-version} only, e.g., 1.0.0; no run-number)'
         required: true
         type: string
@@ -741,7 +741,6 @@ jobs:
 #    runs-on:
 #      group: sh-dso-snbx-cd-local-001
 #      labels: [agent-snbx-001]
-    runs-on: ubuntu-latest
     needs: [prepare, deploy, create-release-tag]
     if: always()
 
