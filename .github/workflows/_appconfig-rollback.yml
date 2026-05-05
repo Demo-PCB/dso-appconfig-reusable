@@ -309,6 +309,7 @@ jobs:
             --content-type '${{ inputs.content-type }}' \
             --yes"
           
+          echo "${IMPORT_CMD}"
           if [ -n "${{ inputs.label }}" ]; then
             IMPORT_CMD="${IMPORT_CMD} --label '${{ inputs.label }}'"
           fi
