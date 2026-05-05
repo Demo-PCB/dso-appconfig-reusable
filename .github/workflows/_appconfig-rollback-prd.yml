@@ -138,7 +138,7 @@ jobs:
           ARTIFACT_NAME="${{ inputs.component-name }}-appconfig-${{ inputs.version }}"
           LOWER_APP=$(echo "${{ inputs.application }}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
           PREFIX=$(echo "${{ inputs.application }}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-          ARTIFACT_PATH="${PREFIX}-generic-release/${LOWER_APP}/${{ inputs.component-name }}/${{ inputs.version }}/${ARTIFACT_NAME}.zip"
+          ARTIFACT_PATH="${PREFIX}-generic-snapshot/${LOWER_APP}/${{ inputs.component-name }}/${{ inputs.version }}/${ARTIFACT_NAME}.zip"
           
           echo "artifact-name=${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
           echo "artifact-path=${ARTIFACT_PATH}" >> $GITHUB_OUTPUT
