@@ -146,7 +146,7 @@ jobs:
             echo "::error::config.yml not found"
             exit 1
           fi
-          
+          echo "${APPCONFIG_NAME}"
           echo "appconfig-name=${APPCONFIG_NAME}" >> $GITHUB_OUTPUT
           echo "resource-group=${RESOURCE_GROUP}" >> $GITHUB_OUTPUT
 
