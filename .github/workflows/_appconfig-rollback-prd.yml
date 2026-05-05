@@ -251,8 +251,8 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Install Azure App Configuration extension
-        run: az extension add --name appconfig --yes || az extension update --name appconfig
+      #- name: Install Azure App Configuration extension
+      #  run: az extension add --name appconfig --yes || az extension update --name appconfig
 
       - name: Preview rollback changes
         run: |
@@ -334,8 +334,8 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Install Azure App Configuration extension
-        run: az extension add --name appconfig --yes || az extension update --name appconfig
+      #- name: Install Azure App Configuration extension
+      #  run: az extension add --name appconfig --yes || az extension update --name appconfig
 
       - name: Execute rollback
         id: rollback
