@@ -137,7 +137,7 @@ jobs:
         id: config
         run: |
           CONFIG_FILE="appconfig/config.yml"
-          ENV="${{ inputs.environment }}"
+          ENV="dev"
           
           if [ -f "$CONFIG_FILE" ]; then
             APPCONFIG_NAME=$(grep -A5 "^${ENV}:" "$CONFIG_FILE" | grep "resourceName:" | head -1 | awk '{print $2}' | tr -d '"' | tr -d "'" || true)
