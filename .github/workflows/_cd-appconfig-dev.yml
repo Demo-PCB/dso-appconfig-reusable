@@ -112,13 +112,13 @@ on:
       # =====================================================
       # Required Secrets - Workflow Configs
       # =====================================================
-      DSO_WORKFLOWS_GHAPP_ID:
-        description: 'GitHub App ID used to read centralized workflow configs'
-        required: true
+      # DSO_WORKFLOWS_GHAPP_ID:
+      #   description: 'GitHub App ID used to read centralized workflow configs'
+      #   required: true
 
-      DSO_WORKFLOWS_GHAPP_PK:
-        description: 'GitHub App private key used to read centralized workflow configs'
-        required: true
+      # DSO_WORKFLOWS_GHAPP_PK:
+      #   description: 'GitHub App private key used to read centralized workflow configs'
+      #   required: true
 
       # =====================================================
       # Required Secrets - Artifactory
@@ -188,15 +188,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Load workflow configs
-        uses: Demo-PCB/dso-commons-reusable/.github/actions/load-workflows-configs@main
-        with:
-          application: ${{ inputs.application }}
-          component-name: ${{ inputs.component-name }}
-          dso-ghe-app-id: ${{ secrets.DSO_WORKFLOWS_GHAPP_ID }}
-          dso-ghe-private-key: ${{ secrets.DSO_WORKFLOWS_GHAPP_PK }}
-          dso-workflows-configs-repo: ${{ vars.DSO_WORKFLOWS_CONFIGS_REPO }}
-          dso-workflows-configs-repo-owner: ${{ vars.DSO_WORKFLOWS_CONFIGS_REPO_OWNER }}
+      # - name: Load workflow configs
+      #   uses: Demo-PCB/dso-commons-reusable/.github/actions/load-workflows-configs@main
+      #   with:
+      #     application: ${{ inputs.application }}
+      #     component-name: ${{ inputs.component-name }}
+      #     dso-ghe-app-id: ${{ secrets.DSO_WORKFLOWS_GHAPP_ID }}
+      #     dso-ghe-private-key: ${{ secrets.DSO_WORKFLOWS_GHAPP_PK }}
+      #     dso-workflows-configs-repo: ${{ vars.DSO_WORKFLOWS_CONFIGS_REPO }}
+      #     dso-workflows-configs-repo-owner: ${{ vars.DSO_WORKFLOWS_CONFIGS_REPO_OWNER }}
 
       - name: Export Artifactory URL from workflow configs
         run: |
