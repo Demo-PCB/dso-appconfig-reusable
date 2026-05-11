@@ -106,7 +106,7 @@ on:
 
 jobs:
   ci:
-    uses: armedinag/dso-appconfig-reusable/.github/workflows/_ci-appconfig.yml@main
+    uses: Demo-PCB/dso-appconfig-reusable/.github/workflows/_ci-appconfig.yml@main
     with:
       application: 'my-application'
     secrets:
@@ -126,7 +126,7 @@ on:
 
 jobs:
   deploy:
-    uses: armedinag/dso-appconfig-reusable/.github/workflows/_cd-appconfig-dev.yml@main
+    uses: Demo-PCB/dso-appconfig-reusable/.github/workflows/_cd-appconfig-dev.yml@main
     with:
       application: 'my-application'
       version: ${{ inputs.version }}
