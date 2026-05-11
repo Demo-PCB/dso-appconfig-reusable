@@ -433,14 +433,23 @@ jobs:
           KEY_COUNT=$(jq 'keys | length' "${DATA_FILE}")
           
           # Build dry-run command with --dry-run flag
-          echo "### Dry Run Import Preview:"
-          DRYRUN_CMD="az appconfig kv import \
+          # echo "### Dry Run Import Preview:"
+          # DRYRUN_CMD="az appconfig kv import \
+          #   --name ${APPCONFIG_NAME} \
+          #   --source file \
+          #   --path ${DATA_FILE} \
+          #   --format json \
+          #   --separator '${{ inputs.separator }}' \
+          #   --dry-run"
+
+          az appconfig kv import \
             --name ${APPCONFIG_NAME} \
             --source file \
             --path ${DATA_FILE} \
             --format json \
             --separator '${{ inputs.separator }}' \
-            --dry-run"
+            --auth-mode login \
+            --dry-run
           
           # Add optional parameters
           if [ -n "${{ inputs.label }}" ]; then
@@ -543,14 +552,24 @@ jobs:
           DATA_FILE="./deployment/data.json"
           
           # Build import command
-          IMPORT_CMD="az appconfig kv import \
+          # IMPORT_CMD="az appconfig kv import \
+          #   --name ${APPCONFIG_NAME} \
+          #   --source file \
+          #   --path ${DATA_FILE} \
+          #   --format json \
+          #   --separator '${{ inputs.separator }}' \
+          #   --content-type '${{ inputs.content-type }}' \
+          #   --yes"
+
+          az appconfig kv import \
             --name ${APPCONFIG_NAME} \
             --source file \
             --path ${DATA_FILE} \
             --format json \
             --separator '${{ inputs.separator }}' \
             --content-type '${{ inputs.content-type }}' \
-            --yes"
+            --auth-mode login \
+            --yes
           
           # Add optional parameters
           if [ -n "${{ inputs.label }}" ]; then
